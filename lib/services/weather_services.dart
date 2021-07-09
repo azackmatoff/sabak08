@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:sabak08/constants/api_keys.dart';
+import 'package:sabak08/helpers/calvin_to_celcius.dart';
 import 'package:sabak08/helpers/client_helper.dart';
 import 'package:sabak08/models/weather_model.dart';
 
@@ -25,6 +26,12 @@ class WeatherServices {
     Map<String, dynamic> data = json.decode(response.body);
 
     WeatherModel weatherModel = WeatherModel.fromMap(data);
+    // WeatherModel weatherModel = WeatherModel(
+    //   id: data['id'],
+    //   cityName: data['name'],
+    //   windSpeed: data['wind']['speed'] ?? 0.0,
+    //   celcius: TempHelper().calvinToCelcius(data['main']['temp']),
+    // );
 
     return weatherModel;
   }
